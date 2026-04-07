@@ -1,8 +1,8 @@
 {
-  "buildCommand": "cd kgl-backend && npm install",
-  "devCommand": "cd kgl-backend && npm run dev",
-  "installCommand": "npm install --legacy-peer-deps",
-  "framework": "express",
-  "outputDirectory": "kgl-backend",
-  "public": "kgl-frontend"
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "/", "dest": "/kgl-frontend/index.html" },
+    { "src": "/(.*)", "dest": "/kgl-frontend/$1" }
+  ]
 }
