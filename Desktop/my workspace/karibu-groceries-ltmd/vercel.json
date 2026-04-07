@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd kgl-backend && npm install",
+  "devCommand": "cd kgl-backend && npm run dev",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "express",
+  "outputDirectory": "kgl-backend",
+  "public": "kgl-frontend"
+}

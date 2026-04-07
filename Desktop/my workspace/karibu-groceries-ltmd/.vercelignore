@@ -1,0 +1,10 @@
+node_modules
+.env
+.git
+.vscode
+.history-memo
+*.md
+start-kgl*.bat
+start-kgl*.ps1
+stop-kgl*.bat
+stop-kgl*.ps1

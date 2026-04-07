@@ -1,0 +1,14 @@
+{
+  "name": "karibu-groceries-project",
+  "version": "1.0.0",
+  "description": "Karibu Groceries LTD - Full Stack Application",
+  "main": "kgl-backend/server.js",
+  "scripts": {
+    "dev": "cd kgl-backend && npm run dev",
+    "start": "cd kgl-backend && npm start",
+    "install-all": "npm install && cd kgl-backend && npm install"
+  },
+  "keywords": ["groceries", "e-commerce", "express", "mongodb"],
+  "author": "",
+  "license": "MIT"
+}
