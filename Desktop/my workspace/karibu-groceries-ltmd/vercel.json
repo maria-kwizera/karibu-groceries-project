@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "api/index.js", "use": "@vercel/node" },
+    { "src": "kgl-frontend/**/*", "use": "@vercel/static" }
+  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/index.js" },
     { "src": "/", "dest": "/kgl-frontend/index.html" },
