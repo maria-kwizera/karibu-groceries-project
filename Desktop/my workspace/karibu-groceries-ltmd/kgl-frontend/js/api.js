@@ -1,13 +1,13 @@
 const DEFAULT_API_BASE = (() => {
-  const host = window.location.hostname || "localhost";
+  const host = String(window.location.hostname || "localhost").toLowerCase();
   const localHosts = new Set(["localhost", "127.0.0.1"]);
   if (localHosts.has(host)) return "http://localhost:4000/api";
-  return "/api";
+  return "https://kgl-backend.onrender.com/api";
 })();
 const SESSION_KEY = "kgl_user";
 const API_BASE_KEY = "kgl_api_base";
 const LOCAL_API_BASE = "http://localhost:4000/api";
-const RENDER_API_BASE = "https://karibu-groceries-backend-d5zh.onrender.com/api";
+const RENDER_API_BASE = "https://kgl-backend.onrender.com/api";
 
 // Optional URL toggle: ?api=local | ?api=render | ?api=clear
 (() => {

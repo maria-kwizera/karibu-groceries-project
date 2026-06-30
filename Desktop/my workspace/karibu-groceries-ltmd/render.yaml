@@ -2,7 +2,7 @@ services:
   - type: web
     name: kgl-backend
     env: node
-    rootDir: .
+    rootDir: kgl-backend
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/health
@@ -17,4 +17,10 @@ services:
       - key: JWT_EXPIRES_IN
         value: 7d
       - key: CORS_ORIGIN
-        value: "https://kgl-frontend.onrender.com"
+        value: https://kgl-frontend.onrender.com
+
+  - type: static
+    name: kgl-frontend
+    rootDir: kgl-frontend
+    staticPublishPath: .
+    buildCommand: ""
