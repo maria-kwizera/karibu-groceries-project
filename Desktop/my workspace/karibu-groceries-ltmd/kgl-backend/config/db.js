@@ -4,18 +4,17 @@ const cached = global.mongoose || { conn: null, promise: null };
 global.mongoose = cached;
 
 async function connectDB(uri) {
-  if (!uri) {
-    throw new Error("MONGODB_URI is not defined in environment variables");
-  }
-
   if (cached.conn) {
     return cached.conn;
   }
 
+  if (!uri) {
+    throw new Error("MONGODB_URI is not defined in environment variables");
+  }
+
   if (!cached.promise) {
     cached.promise = mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+      serverSelectionTimeoutMS: 10000
     }).then((mongooseInstance) => {
       cached.conn = mongooseInstance.connection;
       return cached.conn;

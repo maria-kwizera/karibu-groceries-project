@@ -12,20 +12,21 @@ async function start() {
 
     const mongoUri = process.env.MONGODB_URI;
     const localUri = process.env.MONGODB_URI_LOCAL;
-    const selectedUri = isProduction ? mongoUri : (localUri || mongoUri);
+    const selectedUri = isProduction ? (mongoUri || localUri) : (localUri || mongoUri);
 
     console.log(`MongoDB URI configured: ${!!selectedUri}`);
-    if (!selectedUri) {
-      throw new Error("No MongoDB URI configured. Set MONGODB_URI (prod) or MONGODB_URI_LOCAL (local).");
-    }
-
     console.log("Connecting to MongoDB...");
-    await connectDB(selectedUri);
-    console.log("MongoDB connected successfully");
 
-    console.log("Ensuring default users exist...");
-    await ensureDefaultUsers();
-    console.log("Default users check complete");
+    try {
+      await connectDB(selectedUri);
+      console.log("MongoDB connected successfully");
+
+      console.log("Ensuring default users exist...");
+      await ensureDefaultUsers();
+      console.log("Default users check complete");
+    } catch (dbErr) {
+      console.warn("MongoDB unavailable; continuing in degraded mode.", dbErr.message);
+    }
 
     console.log(`Starting server on port ${port}...`);
     app.listen(port, () => {
